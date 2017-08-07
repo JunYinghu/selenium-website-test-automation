@@ -8,8 +8,6 @@ import unittest
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from appium.webdriver.common.touch_action import TouchAction
-from appium.webdriver.common.multi_action import MultiAction
 
 
 # Returns abs path relative to this file and not cwd
