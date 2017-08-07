@@ -1,3 +1,3 @@
 # selenium-test-automation
 
-This project to stucy selenium 
+This project to store testing script on selenium 
