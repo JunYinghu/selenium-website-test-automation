@@ -7,15 +7,18 @@
 3  The script is doing this:
 
    - Launch Firefox browser
-   - Open websit http://www.python.org
-     
+   - Open websit http://www.google.com
+   - Key in search keyword and open the releated websit
+   - Go to Forum, then go to Login page
+   - Enter user_name & pass_word
+   - User Click on Login button
    - Exit from browser
-     Wait 10 second to confirm search result as the above
+     
    
 4 Test tools / ENV
-   - Notepad++
+   - PyCharm
    - Python
-   - Appium   
+   - Seleium webdrvier   
    
 5 Tested information:
    - Firefox browser
