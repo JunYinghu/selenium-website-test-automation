@@ -1,5 +1,4 @@
 # Selenium Test Automation Plan
-https://github.com/JunYinghu
 
 1 This video is designed to show you how I can use selenium webdriver with python for web app testing
 
@@ -23,7 +22,7 @@ https://github.com/JunYinghu
     	- if Make a validation of username, it requires to re-enter username, then script proceed running
     	- esif Make a validation of password, it requires to re-enter password, then script proceed running
       - esif Make a maximum validation of wrong password, then script stops
-     	- else login successfully, make a validation ensure login successfully, and then print validation text
+      - else login successfully, make a validation ensure login successfully, and then print validation text
 
    - Exit from browser    
 
