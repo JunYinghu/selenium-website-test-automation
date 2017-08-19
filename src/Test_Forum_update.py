@@ -1,32 +1,27 @@
-import time
 from sys import argv, exit
-from time import sleep
-
-
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-
-
-SLEEPY_TIME = 1
-timeout = 3
-
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+import sys
 
 class SimpleTestWebBrowser(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.driver = webdriver.Firefox()
         cls.driver.get("https://www.google.com.sg")
-        decoded = cls.driver.page_source.encode('utf8', )
-        # try:
-        #     element_present = EC.presence_of_element_located((By.ID, 'gs_htif0'))
-        #     WebDriverWait(driver, timeout).until(element_present)
-        # except TimeoutException:
-        #     print ("Timed out waiting for page to load")
+        try:
+            WebDriverWait(cls.driver, 3).until(EC.presence_of_element_located((By.NAME, 'btnK')))
+            print ("google search is ready!")
+
+        except TimeoutException:
+            print("Due to loading timeout expired or could not find the element,Close browser,script stops running ")
+            cls.driver.quit()
+            sys.exit()
+
     @classmethod
 
     # Exit from Forum once script was run finished.
@@ -35,53 +30,67 @@ class SimpleTestWebBrowser(unittest.TestCase):
 
     #key in search keyword and open the websit
     def test_00_Open_Google_Search_Webpage(self):
+        Validation_text_1 = "Server not found"
+        Validation_text_2 = "Ranorex: Test Automation for GUI Testing"
         elem = self.driver.find_element_by_id("gs_htif0")
-        #elem.clear()
-        search_key="ranorex"
+        # provide valid keyword 'ranorex'
+        search_key = raw_input("your search keyword (ranorex):")
         elem.send_keys(search_key)
         elem = self.driver.find_element_by_name("btnK")
         elem.click()
         #self.assertEqual(elem.text, "Ranorex: Test Automation for GUI Testing", "failed")
-        #self.driver.quit()
+        #sys.exit()
         #decoded = self.driver.page_source.encode('ascii', 'ignore')
         decoded = self.driver.page_source.encode('utf8',)
-
         #if below either 1 or 2 conditions are meeting, then script is stopped.
-        Validation_text_1 = "Server not found"
-        Validation_text_2 = "Ranorex: Test Automation for GUI Testing"
+        if Validation_text_2 not in decoded:
+           validation = 2
+           #print(validation)
+        else:
+            #print ("path2")
+            validation = 1
+        while (validation >1):
+            self.driver.back()
+            search_key = raw_input("your search keyword (ranorex):")
+            elem = self.driver.find_element_by_id("gs_htif0")
+            elem.send_keys(search_key)
+            elem = self.driver.find_element_by_name("btnK")
+            elem.click()
+            decoded = self.driver.page_source.encode('utf8', )
+            print(decoded)
+            if Validation_text_2 not in decoded:
+               validation = 2
+               #print("validation1")
+               #print(validation)
+            else:
+                print ("path2")
+                validation = 1
+                #print("validation2")
+                #print(validation)
 
-        if Validation_text_1 in decoded:
-            print("error:" + Validation_text_1)
-            self.driver.quit()
-
-        elif Validation_text_2 not in decoded:
-            print("error:" + Validation_text_2+"not found in search result list")
-            self.driver.quit()
-
-        #assert "Ranorex: Test Automation for GUI Testing" not in self.driver.page_source
-        #self.driver.quit()
-        #elem.send_keys(Keys.RETURN
         print("Launch websit:" + Validation_text_2)
         self.driver.find_element_by_css_selector('div._NId:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > h3:nth-child(1) > a:nth-child(1)').click()
-
-        # tabUrl="http://www.google.com/?#q=";
-        # term = raw_input("enter search query:");
-        # webbrowser.open(tabUrl + term, new=new);
+        #print("validation2")
+        #print(validation)
 
     #open Forum while the page was load properly
     def test_01_Open_Forum_Webpage(self):
-        elem = self.driver.find_element_by_css_selector('#language-nav > ul:nth-child(1) > li:nth-child(4) > a:nth-child(1)').click()
-
+        try:
+            WebDriverWait(self.driver, 3).until(EC.presence_of_element_located((By.CSS_SELECTOR, '#language-nav > ul:nth-child(1) > li:nth-child(4) > a:nth-child(1)')))
+            Page_url = self.driver.current_url
+            print ("Pass: validation  You are in " + Page_url + " Ready: Launch Login page")
+            elem = self.driver.find_element_by_css_selector('#language-nav > ul:nth-child(1) > li:nth-child(4) > a:nth-child(1)').click()
+        except TimeoutException:
+            print("Due to loading timeout expired or could not find the element,Close browser,script stops running ")
+            cls.driver.quit()
+            sys.exit()
     #login in Forum with username / password validation
     def test_02_Login_Forum(self):
-        # Go to Login Page
+        #Go to Login Page
         elem = self.driver.find_element_by_css_selector(".icon-logout > a:nth-child(1)").click()
-        # Enter user name / pass word before the script is running so that everyone can use own username / password to login.
+        #Enter user name / pass word before the script is running so that everyone can use own username / password to login.
         user_name = argv[1]
         pass_word = argv[2]
-        # Enter user name / pass word from your command window so that everyone can use own username / password to login.
-        #user_name = raw_input("enter user_name:");
-        #pass_word = raw_input("enter pass_word:");
 
         elem_user = self.driver.find_element_by_id("username")
         elem_user.send_keys(user_name)
@@ -95,34 +104,45 @@ class SimpleTestWebBrowser(unittest.TestCase):
         Validation_wrong_password = "You have specified an incorrect password"
         Validation_wrong_username = "You have specified an incorrect username"
         Validation_wrong_max = "You exceeded the maximum allowed number of login attempts."
+
         if Validation_wrong_username in decoded:
             print("error:" + Validation_wrong_username)
-            user_name = raw_input("enter user_name:");
+            user_name = raw_input("enter user_name (jun):")
             elem_user = self.driver.find_element_by_id("username")
             elem_user.send_keys(user_name)
             elem_pass = self.driver.find_element_by_id("password")
             elem_pass.send_keys(pass_word)
-            print (pass_word)
+            #print (pass_word)
             # Click on Login
             Login_button = self.driver.find_element_by_name("login")
-            Login_button.click();
+            Login_button.click()
+
+            elem = self.driver.find_element_by_css_selector(".icon-logout > a:nth-child(1)")
+            self.assertEqual(elem.text, "Logout [ jun ]", "failed")
+            print("Pass validation " + elem.text + " login successfully")
 
         elif Validation_wrong_password in decoded:
-            print("error:" + Validation_wrong_password);
+            print("error:" + Validation_wrong_password)
             elem_user = self.driver.find_element_by_id("username")
             elem_user.send_keys(user_name)
-            pass_word = raw_input("enter pass_word:");
+            pass_word = raw_input("enter pass_word (yxchappy):")
             elem_pass = self.driver.find_element_by_id("password")
             elem_pass.send_keys(pass_word)
             Login_button = self.driver.find_element_by_name("login")
-            Login_button.click();
+            Login_button.click()
+
+            elem = self.driver.find_element_by_css_selector(".icon-logout > a:nth-child(1)")
+            self.assertEqual(elem.text, "Logout [ jun ]", "failed")
+            print("Pass validation " + elem.text + " login successfully")
 
         elif Validation_wrong_max in decoded:
-            print("error:" + Validation_wrong_max);
+            print("error:" + Validation_wrong_max)
             self.tearDownClass()
 
-        #else:
-            #print("pass: login successfully")
+        else:
+            elem = self.driver.find_element_by_css_selector(".icon-logout > a:nth-child(1)")
+            self.assertEqual(elem.text, "Logout [ jun ]", "failed")
+            print("Pass validation " + elem.text + " login successfully")
 
 
         #get current all opening windows    #def test_01_get_opening_window(self):
