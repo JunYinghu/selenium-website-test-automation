@@ -17,13 +17,14 @@ https://github.com/JunYinghu
      - Everything is ok, user enters into the website, and then click on Forum button to open Login page
    
    - Enter username & password on Login page (before script is running, user is required to provide username/password)
-     	 - If username / password are not provided, it require to enter username / password 
+     	- if username / password are not provided, it require to enter username / password 
    
    - User Click on Login button
-    	 - if Make a validation of username, it requires to re-enter username, then script proceed running
-    	 - esif Make a validation of password, it requires to re-enter password, then script proceed running
-       - esif Make a maximum validation of wrong password, then script stops
-     	 - else login successfully, make a validation ensure login successfully, and then print validation text
+    	- if Make a validation of username, it requires to re-enter username, then script proceed running
+    	- esif Make a validation of password, it requires to re-enter password, then script proceed running
+      - esif Make a maximum validation of wrong password, then script stops
+     	- else login successfully, make a validation ensure login successfully, and then print validation text
+   
    - Exit from browser    
 
 4 Test tools / ENV
