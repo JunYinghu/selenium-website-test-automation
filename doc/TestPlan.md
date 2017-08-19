@@ -2,7 +2,7 @@
 
 [Test_Forum_update.py](src/Test_Forum_update.py)
 
-1 This document is designed to show you how I can use selenium webdriver with python for web app testing
+1 This document is designed to show how I can use selenium webdriver with python for web app testing
 
 2 This test scripts were written in Python
 
