@@ -1,6 +1,6 @@
 # Selenium Test Automation Plan
 
-Script - Test_Forum_update.py
+[Test_Forum_update.py](src/Test_Forum_update.py)
 
 1 This video is designed to show you how I can use selenium webdriver with python for web app testing
 
