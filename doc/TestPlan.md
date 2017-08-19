@@ -29,7 +29,8 @@
 4 Test tools / ENV
    - PyCharm
    - Python
-   - Seleium webdrvier      
+   - Seleium webdrvier
+   
 5 Tested information:
    - Firefox browser   
    
