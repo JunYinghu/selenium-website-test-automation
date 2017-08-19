@@ -24,7 +24,7 @@ https://github.com/JunYinghu
     	- esif Make a validation of password, it requires to re-enter password, then script proceed running
       - esif Make a maximum validation of wrong password, then script stops
      	- else login successfully, make a validation ensure login successfully, and then print validation text
-   
+
    - Exit from browser    
 
 4 Test tools / ENV
