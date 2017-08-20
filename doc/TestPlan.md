@@ -15,10 +15,10 @@
    - Select website I want from search result - https://www.ranorex.com
      - Make a validation via getting current login website url, if user is in the page and proceed
 
-     - Everything is ok, user enters into the website, and then click on Forum button to open Login page
+     - Everything is ok, user enters into the website, and then clicks on Forum button to open Login page
    
    - Enter username & password on Login page (before script is running, user is required to provide username/password)
-     	- if username / password are not provided, it require to enter username / password 
+     	- if username / password are not provided, it requires to enter username / password 
    
    - User Click on Login button
     	- Make a validation via page source code to check user login successfully. If not, it prints error message and it requests to re-enter failed data till correct data is provided.
