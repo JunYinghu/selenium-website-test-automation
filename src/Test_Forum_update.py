@@ -1,4 +1,6 @@
 from sys import argv, exit
+from time import sleep
+import time
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -26,6 +28,7 @@ class SimpleTestWebBrowser(unittest.TestCase):
 
     # Exit from Forum once script was run finished.
     def tearDownClass(cls):
+        time.sleep(2)
         cls.driver.quit()
 
     #key in search keyword and open the websit
@@ -91,6 +94,11 @@ class SimpleTestWebBrowser(unittest.TestCase):
         #Enter user name / pass word before the script is running so that everyone can use own username / password to login.
         user_name = argv[1]
         pass_word = argv[2]
+        Validation_wrong_password = "You have specified an incorrect password"
+        Validation_wrong_username = "You have specified an incorrect username"
+        Validation_wrong_max = "You exceeded the maximum allowed number of login attempts."
+        Validation_wrong_confirmation_code = "The confirmation code you entered was incorrect"
+        Validation_long_successfully = "You have been successfully logged in."
 
         elem_user = self.driver.find_element_by_id("username")
         elem_user.send_keys(user_name)
@@ -101,48 +109,97 @@ class SimpleTestWebBrowser(unittest.TestCase):
         Login_button.click();
 
         decoded = self.driver.page_source.encode('utf8', )
-        Validation_wrong_password = "You have specified an incorrect password"
-        Validation_wrong_username = "You have specified an incorrect username"
-        Validation_wrong_max = "You exceeded the maximum allowed number of login attempts."
+        elem = self.driver.find_element_by_css_selector(".icon-logout > a:nth-child(1)")
 
         if Validation_wrong_username in decoded:
-            print("error:" + Validation_wrong_username)
-            user_name = raw_input("enter user_name (jun):")
-            elem_user = self.driver.find_element_by_id("username")
-            elem_user.send_keys(user_name)
-            elem_pass = self.driver.find_element_by_id("password")
-            elem_pass.send_keys(pass_word)
-            #print (pass_word)
-            # Click on Login
-            Login_button = self.driver.find_element_by_name("login")
-            Login_button.click()
-
-            elem = self.driver.find_element_by_css_selector(".icon-logout > a:nth-child(1)")
-            self.assertEqual(elem.text, "Logout [ jun ]", "failed")
-            print("Pass validation " + elem.text + " login successfully")
-
+            loginvalidation = 1
+            print (loginvalidation)
         elif Validation_wrong_password in decoded:
-            print("error:" + Validation_wrong_password)
+            loginvalidation = 2
+            print (loginvalidation)
+        elif Validation_wrong_max in decoded:
+            loginvalidation = 3
+            print (loginvalidation)
+        else:
+            self.assertEqual(elem.text, "Logout [ jun ]", "failed")
+            print("Pass validation " + elem.text + " login successfully")
+            loginvalidation = 0
+            print (loginvalidation)
+
+        while (loginvalidation >0):
             elem_user = self.driver.find_element_by_id("username")
             elem_user.send_keys(user_name)
-            pass_word = raw_input("enter pass_word (yxchappy):")
             elem_pass = self.driver.find_element_by_id("password")
             elem_pass.send_keys(pass_word)
+                # print (pass_word)
+                # Click on Login
             Login_button = self.driver.find_element_by_name("login")
             Login_button.click()
-
+            decoded = self.driver.page_source.encode('utf8', )
             elem = self.driver.find_element_by_css_selector(".icon-logout > a:nth-child(1)")
-            self.assertEqual(elem.text, "Logout [ jun ]", "failed")
-            print("Pass validation " + elem.text + " login successfully")
+            if Validation_wrong_username in decoded:
+                loginvalidation = 1
+                print("error:" + Validation_wrong_username)
+                user_name = raw_input("enter user_name (jun):")
+            elif Validation_wrong_password in decoded:
+                loginvalidation = 2
+                print("error:" + Validation_wrong_password)
+                pass_word = raw_input("enter pass_word (yxchappy):")
+            elif Validation_wrong_max in decoded or Validation_wrong_confirmation_code in decoded:
+                loginvalidation = 3
+                print("error:" + Validation_wrong_max)
+                user_name = raw_input("enter user_name (jun):")
+                pass_word = raw_input("enter pass_word (yxchappy):")
+                confirm_code = raw_input("confirm_code:")
+                elem_user = self.driver.find_element_by_id("confirm_code")
+                elem_user.send_keys(confirm_code)
+            else:
+                Validation_long_successfully in decoded
+                print("Pass:" + Validation_long_successfully)
+                loginvalidation = 0
 
-        elif Validation_wrong_max in decoded:
-            print("error:" + Validation_wrong_max)
-            self.tearDownClass()
-
-        else:
-            elem = self.driver.find_element_by_css_selector(".icon-logout > a:nth-child(1)")
-            self.assertEqual(elem.text, "Logout [ jun ]", "failed")
-            print("Pass validation " + elem.text + " login successfully")
+        print(loginvalidation)
+        print("in laststep")
+        elem = self.driver.find_element_by_css_selector(".icon-logout > a:nth-child(1)")
+        self.assertEqual(elem.text, "Logout [ jun ]", "failed")
+        print("Pass validation " + elem.text + " login successfully")
+        #     print("error:" + Validation_wrong_username)
+        #     user_name = raw_input("enter user_name (jun):")
+        #     elem_user = self.driver.find_element_by_id("username")
+        #     elem_user.send_keys(user_name)
+        #     elem_pass = self.driver.find_element_by_id("password")
+        #     elem_pass.send_keys(pass_word)
+        #     #print (pass_word)
+        #     # Click on Login
+        #     Login_button = self.driver.find_element_by_name("login")
+        #     Login_button.click()
+        #
+        #     elem = self.driver.find_element_by_css_selector(".icon-logout > a:nth-child(1)")
+        #     self.assertEqual(elem.text, "Logout [ jun ]", "failed")
+        #     print("Pass validation " + elem.text + " login successfully")
+        #
+        # elif Validation_wrong_password in decoded:
+        #     print("error:" + Validation_wrong_password)
+        #     elem_user = self.driver.find_element_by_id("username")
+        #     elem_user.send_keys(user_name)
+        #     pass_word = raw_input("enter pass_word (yxchappy):")
+        #     elem_pass = self.driver.find_element_by_id("password")
+        #     elem_pass.send_keys(pass_word)
+        #     Login_button = self.driver.find_element_by_name("login")
+        #     Login_button.click()
+        #
+        #     elem = self.driver.find_element_by_css_selector(".icon-logout > a:nth-child(1)")
+        #     self.assertEqual(elem.text, "Logout [ jun ]", "failed")
+        #     print("Pass validation " + elem.text + " login successfully")
+        #
+        # elif Validation_wrong_max in decoded:
+        #     print("error:" + Validation_wrong_max)
+        #     self.tearDownClass()
+        #
+        # else:
+        #     elem = self.driver.find_element_by_css_selector(".icon-logout > a:nth-child(1)")
+        #     self.assertEqual(elem.text, "Logout [ jun ]", "failed")
+        #     print("Pass validation " + elem.text + " login successfully")
 
 
         #get current all opening windows    #def test_01_get_opening_window(self):

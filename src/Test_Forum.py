@@ -121,8 +121,10 @@ class SimpleTestWebBrowser(unittest.TestCase):
             print("error:" + Validation_wrong_max);
             self.tearDownClass()
 
-        #else:
-            #print("pass: login successfully")
+        else:
+          elem = self.driver.find_element_by_css_selector(".icon-logout > a:nth-child(1)")
+          self.assertEqual(elem.text, "Logout [ jun ]", "failed")
+          print("Pass validation " + elem.text + " login successfully")
 
 
         #get current all opening windows    #def test_01_get_opening_window(self):
