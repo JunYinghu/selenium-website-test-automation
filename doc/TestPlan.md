@@ -10,12 +10,10 @@
    - Launch Firefox browser
    - Open google search main page - http://www.google.com
    - Key in search keyword and click on Search button
-      - make a validation via page source code to check wanted keywords are displaying in the search result,  if Not, it requires user to re-enter proper keyword until correct keyword is provided
+      - make a validation via getting page source code to check wanted keywords are displaying in the search result, if Not, it requires user to re-enter proper keyword until correct keyword is provided
 
    - Select website I want from search result - https://www.ranorex.com
-     - Make a validation via getting current login website url, if user is in the page and proceed
-
-     - Everything is ok, user enters into the website, and then clicks on Forum button to open Login page
+     - Make a validation via getting current login website url to ensure user is in the website, then user clicks on Forum button to open Login page
    
    - Enter username & password on Login page (before script is running, user is required to provide username/password)
      	- if username / password are not provided, it requires to enter username / password 
@@ -23,7 +21,7 @@
    - User Click on Login button
     	- Make a validation via page source code to check user login successfully. If not, it prints error message and it requests to re-enter failed data till correct data is provided.
     	  - validation of username, password, maximum of wrong password, confirmation code
-      - Finally all data are correct then print validation text (login successfully text)
+      - Once all data are correct then print validation text (login successfully text)
 
    - Exit from browser    
 
