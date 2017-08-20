@@ -22,7 +22,7 @@
    
    - User Click on Login button
     	- Make a validation via page source code to check user login successfully. If not, it prints error message and it requests to re-enter failed data till correct data is provided.
-    	  - validation of password, it requires to re-enter password, then script proceed running
+    	  - validation of username, password, maximum of wrong password, confirmation code
       - Finally all data are correct then print validation text (login successfully text)
 
    - Exit from browser    
