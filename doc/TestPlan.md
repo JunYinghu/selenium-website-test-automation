@@ -21,10 +21,9 @@
      	- if username / password are not provided, it require to enter username / password 
    
    - User Click on Login button
-    	- if Make a validation of username, it requires to re-enter username, then script proceed running
-    	- esif Make a validation of password, it requires to re-enter password, then script proceed running
-      - esif Make a maximum validation of wrong password, then script stops
-      - else login successfully, make a validation ensure login successfully, and then print validation text
+    	- Make a validation via page source code to check user login successfully. If not, it prints error message and it requests to re-enter failed data till correct data is provided.
+    	  - validation of password, it requires to re-enter password, then script proceed running
+      - Finally all data are correct then print validation text (login successfully text)
 
    - Exit from browser    
 
