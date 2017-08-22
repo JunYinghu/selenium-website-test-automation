@@ -30,8 +30,8 @@ class SimpleTestWebBrowser(unittest.TestCase):
     @classmethod
 
     # Exit from Forum once script was run finished.
-    def tearDownClass(cls):
-        cls.driver.quit()
+    #def tearDownClass(cls):
+        #cls.driver.quit()
 
     #key in search keyword and open the websit
     def test_00_Open_Google_Search_Webpage(self):
@@ -119,13 +119,14 @@ class SimpleTestWebBrowser(unittest.TestCase):
 
         elif Validation_wrong_max in decoded:
             print("error:" + Validation_wrong_max);
-            self.tearDownClass()
+            self.driver.quit()
 
         else:
           elem = self.driver.find_element_by_css_selector(".icon-logout > a:nth-child(1)")
           self.assertEqual(elem.text, "Logout [ jun ]", "failed")
           print("Pass validation " + elem.text + " login successfully")
-
+          session_id = self.driver.session_id
+          print (session_id)
 
         #get current all opening windows    #def test_01_get_opening_window(self):
         #links = linkGrabber.Links('http://google.com')
