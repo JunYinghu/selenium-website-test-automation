@@ -45,10 +45,17 @@ class SimpleTestWebBrowser(unittest.TestCase):
         print ("user is in User Control Panel > Board Preferences")
     def test_01_open_user_board_preferences(self):
         user_email = self.driver.find_element_by_id(self.config.get('Board', 'location_board_video_id_user_email_n'))
+
+
         #email_option = user_email.getText
         #user_email.getAttribute("for")
         #print (email_option)
         user_email.click()
+        if user_email.is_selected():
+            print 'selected!'
+            user_email.gettext()
+        else:
+            print 'not yet!'
         admin_email = self.driver.find_element_by_id(self.config.get('Board', 'location_board_video_id_admin_email_n')).click()
 
         language_select = Select(self.driver.find_element_by_id(self.config.get('Board', 'location_board_drop_id_language')))
