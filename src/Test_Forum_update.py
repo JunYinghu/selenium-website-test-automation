@@ -11,6 +11,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import ConfigParser
 import sys
 
+
 class SimpleTestWebBrowser(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -28,13 +29,12 @@ class SimpleTestWebBrowser(unittest.TestCase):
             sys.exit()
 
     @classmethod
-
     # Exit from Forum once script was run finished.
     def tearDownClass(cls):
         time.sleep(8)
         cls.driver.quit()
 
-    #key in search keyword and open the websit
+    # key in search keyword and open the websit
     def test_00_Open_Google_Search_Webpage(self):
         Validation_text_1 = "Server not found"
         Validation_text_2 = "Ranorex: Test Automation for GUI Testing"
@@ -45,18 +45,18 @@ class SimpleTestWebBrowser(unittest.TestCase):
         elem = self.driver.find_element_by_name("btnK")
         elem.click()
         time.sleep(2)
-        #self.assertEqual(elem.text, "Ranorex: Test Automation for GUI Testing", "failed")
-        #sys.exit()
-        #decoded = self.driver.page_source.encode('ascii', 'ignore')
-        decoded = self.driver.page_source.encode('utf8',)
-        #if below either 1 or 2 conditions are meeting, then script is stopped.
+        # self.assertEqual(elem.text, "Ranorex: Test Automation for GUI Testing", "failed")
+        # sys.exit()
+        # decoded = self.driver.page_source.encode('ascii', 'ignore')
+        decoded = self.driver.page_source.encode('utf8', )
+        # if below either 1 or 2 conditions are meeting, then script is stopped.
         if Validation_text_2 not in decoded:
-           validation = 2
-           #print(validation)
+            validation = 2
+            # print(validation)
         else:
-            #print ("path2")
+            # print ("path2")
             validation = 1
-        while (validation >1):
+        while (validation > 1):
             self.driver.back()
             print("Expected website are not found")
             search_key = raw_input("Re-enter your search keyword (ranorex):")
@@ -68,36 +68,40 @@ class SimpleTestWebBrowser(unittest.TestCase):
             decoded = self.driver.page_source.encode('utf8', )
             print(decoded)
             if Validation_text_2 not in decoded:
-               validation = 2
-               #print("validation1")
-               #print(validation)
+                validation = 2
+                # print("validation1")
+                # print(validation)
             else:
-                #print ("path2")
+                # print ("path2")
                 validation = 1
-                #print("validation2")
-                #print(validation)
+                # print("validation2")
+                # print(validation)
 
         print("Launch websit:" + Validation_text_2)
-        self.driver.find_element_by_css_selector('div._NId:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > h3:nth-child(1) > a:nth-child(1)').click()
-        #print("validation2")
-        #print(validation)
+        self.driver.find_element_by_css_selector(
+            'div._NId:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > h3:nth-child(1) > a:nth-child(1)').click()
+        # print("validation2")
+        # print(validation)
 
-    #open Forum while the page was load properly
+    # open Forum while the page was load properly
     def test_01_Open_Forum_Webpage(self):
         try:
-            WebDriverWait(self.driver, 3).until(EC.presence_of_element_located((By.CSS_SELECTOR, '#language-nav > ul:nth-child(1) > li:nth-child(4) > a:nth-child(1)')))
+            WebDriverWait(self.driver, 3).until(EC.presence_of_element_located(
+                (By.CSS_SELECTOR, '#language-nav > ul:nth-child(1) > li:nth-child(4) > a:nth-child(1)')))
             Page_url = self.driver.current_url
             print ("Pass: validation  You are in " + Page_url + " Ready: Launch Login page")
-            elem = self.driver.find_element_by_css_selector('#language-nav > ul:nth-child(1) > li:nth-child(4) > a:nth-child(1)').click()
+            elem = self.driver.find_element_by_css_selector(
+                '#language-nav > ul:nth-child(1) > li:nth-child(4) > a:nth-child(1)').click()
         except TimeoutException:
             print("Due to loading timeout expired or could not find the element,Close browser,script stops running ")
             cls.driver.quit()
             sys.exit()
-    #login in Forum with username / password validation
+
+    # login in Forum with username / password validation
     def test_02_Login_Forum(self):
-        #Go to Login Page
+        # Go to Login Page
         elem = self.driver.find_element_by_css_selector(".icon-logout > a:nth-child(1)").click()
-        #Enter user name / pass word before the script is running so that everyone can use own username / password to login.
+        # Enter user name / pass word before the script is running so that everyone can use own username / password to login.
         user_name = argv[1]
         pass_word = argv[2]
         Validation_wrong_password = "You have specified an incorrect password"
@@ -142,20 +146,19 @@ class SimpleTestWebBrowser(unittest.TestCase):
                     time.sleep(1)
 
             with open('sid.txt', 'w') as outfile:
-               outfile.write(sid)
-            #
-            # outfile = open('sid.txt', 'w')
-            # outfile.write(sid)
-            # outfile.close()
+                outfile.write(sid)
+                #
+                # outfile = open('sid.txt', 'w')
+                # outfile.write(sid)
+                # outfile.close()
 
-
-        while (loginvalidation >0):
+        while (loginvalidation > 0):
             elem_user = self.driver.find_element_by_id("username")
             elem_user.send_keys(user_name)
             elem_pass = self.driver.find_element_by_id("password")
             elem_pass.send_keys(pass_word)
-                # print (pass_word)
-                # Click on Login
+            # print (pass_word)
+            # Click on Login
             Login_button = self.driver.find_element_by_name("login")
             Login_button.click()
             decoded = self.driver.page_source.encode('utf8', )
@@ -190,13 +193,14 @@ class SimpleTestWebBrowser(unittest.TestCase):
                 print("Pass:" + Validation_long_successfully)
                 loginvalidation = 0
 
-        #print(loginvalidation)
-        #print("in laststep")
+        # print(loginvalidation)
+        # print("in laststep")
         elem = self.driver.find_element_by_css_selector(self.config.get('Login', 'location_css_btn_logout'))
         self.assertEqual(elem.text, "Logout [ jun ]", "failed")
         print("Pass validation " + elem.text + " login successfully")
-        #value = self.config.get('Login', 'UserControlPanel')
-        #print value
+        # value = self.config.get('Login', 'UserControlPanel')
+        # print value
+
     def extract_param(self):
         kv = {}
         (_, param) = self.driver.current_url.split('?')
@@ -211,5 +215,5 @@ if __name__ == '__main__':
         print "please supply username and password"
         exit(1)
     suite = unittest.TestLoader().loadTestsFromTestCase(SimpleTestWebBrowser)
-    suite.sortTestMethodsUsing=None
+    suite.sortTestMethodsUsing = None
     unittest.TextTestRunner(verbosity=2).run(suite)

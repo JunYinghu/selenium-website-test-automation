@@ -29,12 +29,10 @@ class SimpleTestWebBrowser(unittest.TestCase):
             print("Due to loading timeout expired or could not find the element,Close browser,script stops running ")
             cls.driver.quit()
             sys.exit()
-
     @classmethod
-
     def tearDownClass(cls):
         time.sleep(8)
-        cls.driver.quit()
+        # cls.driver.quit()
 
     def test_00_open_usercontrolpanel(self):
         elem = self.driver.find_element_by_css_selector(self.config.get('Forum', 'location_forum_css_btn_useruontropuanel'))
@@ -53,16 +51,32 @@ class SimpleTestWebBrowser(unittest.TestCase):
         user_email.click()
         if user_email.is_selected():
             print 'selected!'
-            user_email.gettext()
+            text = user_email.get_attribute("innerHTML")
+            print "====this is radio text" , text
         else:
             print 'not yet!'
         admin_email = self.driver.find_element_by_id(self.config.get('Board', 'location_board_video_id_admin_email_n')).click()
 
-        language_select = Select(self.driver.find_element_by_id(self.config.get('Board', 'location_board_drop_id_language')))
-        language_select.select_by_index(0)
+        #language_select = Select(self.driver.find_element_by_id(self.config.get('Board', 'location_board_drop_id_language')))
+        language_select = self.driver.find_element_by_id(self.config.get('Board', 'location_board_drop_id_language'))
+        elements = language_select.find_elements_by_tag_name('option')
+
+        with open('outfile.csv', 'w') as fout:
+            fout.write('"","","","index","text"\n')
+            for i, x in  enumerate(elements):
+                fout.write('"","","","{}","{}"\n'.format(i, x.get_attribute("innerHTML")))
+                print " element #{} has text {} ".format(i, x.get_attribute("innerHTML"))
+
+
+       #language_select.select_by_index(0)
         time_zone = Select(self.driver.find_element_by_id(self.config.get('Board', 'location_board_drop_id_timezone')))
-        i = [0,1,2,3,4,5]
+        i = [0, 1, 2, 3, 4, 5]
         time_zone.select_by_index(random.choice(i))
+
+        root = self.driver.find_element_by_id('timezone')
+        option_count = len(root.find_elements_by_tag_name('option'))
+        print "=== option_count = {}".format(option_count)
+
 
 
 if __name__ == '__main__':
