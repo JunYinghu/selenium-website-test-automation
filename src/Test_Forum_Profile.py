@@ -1,28 +1,36 @@
-import time
-from time import sleep
-import unittest
-from selenium import webdriver
 import ConfigParser
+import random
+import sys
+import time
+import unittest
+
+from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-import sys
 from selenium.webdriver.support.ui import Select
-import random
+from selenium.webdriver.support.ui import WebDriverWait
+
+from CheckRadio import CheckRadio
+
 
 class SimpleTestWebBrowser(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.config = ConfigParser.RawConfigParser(allow_no_value=True)
-        cls.config.read('config1.txt')
+        cls.config.read('config.txt')
         cls.driver = webdriver.Firefox()
         sid = ''
+
         with open('sid.txt', 'r') as outfile:
             sid = outfile.read()
-        cls.driver.get("https://www.ranorex.com/forum/index.php?sid=" + sid)
+        # cls.driver.get("https://www.ranorex.com/forum/index.php?sid=" + sid)
+
+        cls.checkradio = CheckRadio(cls.driver, cls.config)
+        cls.checkradio.driver.get("https://www.ranorex.com/forum/index.php?sid=" + sid)
         try:
-            WebDriverWait(cls.driver, 3).until(EC.presence_of_element_located((By.CSS_SELECTOR, '.icon-ucp > a:nth-child(1)')))
+            WebDriverWait(cls.driver, 3).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, '.icon-ucp > a:nth-child(1)')))
             print ("you may update your profile!")
 
         except TimeoutException:
@@ -35,52 +43,72 @@ class SimpleTestWebBrowser(unittest.TestCase):
         # cls.driver.quit()
 
     def test_00_open_usercontrolpanel(self):
-        elem = self.driver.find_element_by_css_selector(self.config.get('Forum', 'location_forum_css_btn_useruontropuanel'))
+        elem = self.driver.find_element_by_css_selector(
+            self.config.get('Forum', 'location_forum_css_btn_useruontropuanel'))
         elem.click()
-        elem = self.driver.find_element_by_css_selector(self.config.get('Forum', 'location_forum_css_btn_boardpreferences'))
+        elem = self.driver.find_element_by_css_selector(
+            self.config.get('Forum', 'location_forum_css_btn_boardpreferences'))
         elem.click()
+        print "user is in User Control Panel > Board Preferences"
 
-        print ("user is in User Control Panel > Board Preferences")
     def test_01_open_user_board_preferences(self):
-        user_email = self.driver.find_element_by_id(self.config.get('Board', 'location_board_video_id_user_email_n'))
+        radio_select_n ="location_board_video_id_user_email_n"
+        radio_select_y="location_board_video_id_user_email_y"
+        self.checkradio.validradio(radio_select_n,radio_select_y)
 
+        radio_select_n = "location_board_video_id_admin_email_n"
+        radio_select_y = "location_board_video_id_admin_email_y"
+        self.checkradio.validradio(radio_select_n, radio_select_y)
 
-        #email_option = user_email.getText
-        #user_email.getAttribute("for")
-        #print (email_option)
-        user_email.click()
-        if user_email.is_selected():
-            print 'selected!'
-            text = user_email.get_attribute("innerHTML")
-            print "====this is radio text" , text
-        else:
-            print 'not yet!'
-        admin_email = self.driver.find_element_by_id(self.config.get('Board', 'location_board_video_id_admin_email_n')).click()
+        radio_select_n = 'location_board_video_id_private_msg_n'
+        radio_select_y = 'location_board_video_id_private_msg_y'
+        self.checkradio.validradio(radio_select_n, radio_select_y)
+
+        radio_select_y = 'location_board_video_id_private_msg_y'
+        radio_select_n = 'location_board_video_id_private_msg_n'
+        self.checkradio.validradio(radio_select_n, radio_select_y)
+        radio_select_n = 'location_board_video_id_hide_online_n'
+        radio_select_y = 'location_board_video_id_hide_online_y'
+        self.checkradio.validradio(radio_select_n, radio_select_y)
+        radio_select_n = 'location_board_video_id_notify_msg_n'
+        radio_select_y= 'location_board_video_id_notify_msg_y'
+        self.checkradio.validradio(radio_select_n, radio_select_y)
+        radio_select_n= 'location_board_video_id_pop_win_n'
+        radio_select_y= 'location_board_video_id_pop_win_y'
+        self.checkradio.validradio(radio_select_n, radio_select_y)
 
         #language_select = Select(self.driver.find_element_by_id(self.config.get('Board', 'location_board_drop_id_language')))
-        language_select = self.driver.find_element_by_id(self.config.get('Board', 'location_board_drop_id_language'))
-        elements = language_select.find_elements_by_tag_name('option')
 
-        with open('outfile.csv', 'w') as fout:
-            fout.write('"","","","index","text"\n')
-            for i, x in  enumerate(elements):
-                fout.write('"","","","{}","{}"\n'.format(i, x.get_attribute("innerHTML")))
-                print " element #{} has text {} ".format(i, x.get_attribute("innerHTML"))
+        # Get drop down list options and output into a csv file
+        # language_select = self.driver.find_element_by_id(self.config.get('Board', 'location_board_drop_id_language'))
+        # elements = language_select.find_elements_by_tag_name('option')
+        # with open('outfile.csv', 'w') as fout:
+        #     fout.write('"","","","index","text"\n')
+        #     for i, x in enumerate(elements):
+        #         fout.write('"","","","{}","{}"\n'.format(i, x.get_attribute("innerHTML")))
+        #         print " element #{} has text {} ".format(i, x.get_attribute("innerHTML"))
+        #
+        # # get drop down list count
+        # option_count = len(language_select.find_elements_by_tag_name('option'))
+        # print "=== option_count = {}".format(option_count)
+        # language_select.select_by_index(0)
 
-
-       #language_select.select_by_index(0)
         time_zone = Select(self.driver.find_element_by_id(self.config.get('Board', 'location_board_drop_id_timezone')))
-        i = [0, 1, 2, 3, 4, 5]
-        time_zone.select_by_index(random.choice(i))
+        time_zone_select = self.driver.find_element_by_id(self.config.get('Board', 'location_board_drop_id_timezone'))
+        time_zone_count = len(time_zone_select.find_elements_by_tag_name('option'))
 
-        root = self.driver.find_element_by_id('timezone')
-        option_count = len(root.find_elements_by_tag_name('option'))
-        print "=== option_count = {}".format(option_count)
+        time_zone_rang = [0,time_zone_count-1]
+        i = random.choice(time_zone_rang)
+        print i
+        time_zone.select_by_index(i)
 
-
+        radio_select_y = 'location_board_video_id_sum_time_y'
+        radio_select_n = 'location_board_video_id_sum_time_n'
+        self.checkradio.validradio(radio_select_n, radio_select_y)
+        submit = self.driver.find_element_by_name(self.config.get('Board', 'location_board_btn_name_submit'))
+        submit.click()
 
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(SimpleTestWebBrowser)
-    suite.sortTestMethodsUsing=None
+    suite.sortTestMethodsUsing = None
     unittest.TextTestRunner(verbosity=2).run(suite)
-

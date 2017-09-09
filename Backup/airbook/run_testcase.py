@@ -3,11 +3,10 @@ import csv
 import os
 import unittest
 
-from selenium import webdriver
-
 from airbook.search_airtick.searchtrip import SearchTrip
 from airbook.utils.promogenverify import prom_cod_gent
 from airbook.utils.promogenverify import prom_codgent_invalid
+from selenium import webdriver
 
 filename = "test_result_air_book.csv"
 result_title = (
@@ -49,6 +48,7 @@ class AirTripbooking(unittest.TestCase):
                     p = 0
                     while p < 2:
                         if p == 0:
+
                             input_prom_cod = prom_cod_gent()
                             values = self.provider.get_depature_return(current_depature_id, current_return_id,
                                                                        input_prom_cod)

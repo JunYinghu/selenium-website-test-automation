@@ -1,22 +1,21 @@
-from sys import argv, exit
-from time import sleep
-import time
-import unittest
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
 import ConfigParser
 import sys
+import time
+import unittest
+from sys import argv, exit
+
+from selenium import webdriver
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 class SimpleTestWebBrowser(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.config = ConfigParser.RawConfigParser(allow_no_value=True)
-        cls.config.read('config1.txt')
+        cls.config.read('config.txt')
         cls.driver = webdriver.Firefox()
         cls.driver.get("https://www.google.com.sg")
         try:
@@ -56,7 +55,7 @@ class SimpleTestWebBrowser(unittest.TestCase):
         else:
             # print ("path2")
             validation = 1
-        while (validation > 1):
+        while validation > 1:
             self.driver.back()
             print("Expected website are not found")
             search_key = raw_input("Re-enter your search keyword (ranorex):")
@@ -94,7 +93,7 @@ class SimpleTestWebBrowser(unittest.TestCase):
                 '#language-nav > ul:nth-child(1) > li:nth-child(4) > a:nth-child(1)').click()
         except TimeoutException:
             print("Due to loading timeout expired or could not find the element,Close browser,script stops running ")
-            cls.driver.quit()
+            self.driver.quit()
             sys.exit()
 
     # login in Forum with username / password validation
@@ -162,7 +161,7 @@ class SimpleTestWebBrowser(unittest.TestCase):
             Login_button = self.driver.find_element_by_name("login")
             Login_button.click()
             decoded = self.driver.page_source.encode('utf8', )
-            elem = self.driver.find_element_by_css_selector(".icon-logout > a:nth-child(1)")
+            # elem = self.driver.find_element_by_css_selector(".icon-logout > a:nth-child(1)")
             if Validation_wrong_username in decoded:
                 loginvalidation = 1
                 print("error:" + Validation_wrong_username)
