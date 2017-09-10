@@ -7,5 +7,8 @@ This project to store testing script on selenium
 - [Test_Forum_update.py](src/Test_Forum_update.py) - written in Python. Made some optimization as [Test_Forum.py](src/Test_Forum.py). It is more flexible while running. 
 - Watching video https://youtu.be/kvSdQnsxQYQ
 
+- [Test_Forum_Profile.py](src/Test_Forum_Profile.py) - written in Python
+- Watching video https://youtu.be/kvSdQnsxQYQ
+
 ## Documentation
 - [Test plan](doc/TestPlan.md)
