@@ -1,5 +1,4 @@
 import ConfigParser
-import random
 import sys
 import time
 import unittest
@@ -18,17 +17,17 @@ from EditPost import EditPost
 class SimpleTestWebBrowser(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        with open('sid.txt', 'r') as outfile:
+            sid = outfile.read()
         cls.config = ConfigParser.RawConfigParser(allow_no_value=True)
         cls.config.read('config.txt')
         cls.driver = webdriver.Firefox()
-        # sid = ''
-        with open('sid.txt', 'r') as outfile:
-            sid = outfile.read()
-        # cls.driver.get("https://www.ranorex.com/forum/index.php?sid=" + sid)
 
         cls.checkradio = CheckRadio(cls.driver, cls.config)
         cls.editpost = EditPost(cls.driver, cls.config)
         cls.checkradio.driver.get("https://www.ranorex.com/forum/index.php?sid=" + sid)
+        # cls.driver.get("https://www.ranorex.com/forum/index.php?sid=" + sid)
+
         try:
             WebDriverWait(cls.driver, 3).until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, '.icon-ucp > a:nth-child(1)')))
@@ -41,19 +40,22 @@ class SimpleTestWebBrowser(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        time.sleep(8)
-        # cls.driver.quit()
+        time.sleep(15)
+        cls.driver.quit()
 
     def test_00_open_user_control_panel(self):
-        elem = self.driver.find_element_by_css_selector(
+        control_panel = self.driver.find_element_by_css_selector(
             self.config.get('Forum', 'location_forum_css_btn_useruontropuanel'))
-        elem.click()
-        elem = self.driver.find_element_by_css_selector(
+       # control_panel = self.driver.find_element_by_css_selector(".icon-ucp > a:nth-child(1)")
+
+        control_panel.click()
+        board_preferences = self.driver.find_element_by_css_selector(
             self.config.get('Forum', 'location_forum_css_btn_boardpreferences'))
-        elem.click()
-        print "user is in User Control Panel > Board Preferences"
+        board_preferences.click()
+        # print "user is in User Control Panel > Board Preferences"
 
     def test_01_edit_global_settings(self):
+        time.sleep(15)
         section = 'Board'
         radio_select_n = "location_board_video_id_user_email_n"
         radio_select_y = "location_board_video_id_user_email_y"
@@ -86,16 +88,15 @@ class SimpleTestWebBrowser(unittest.TestCase):
         # get drop down list count
         option_count = len(timezoneoptions.find_elements_by_tag_name('option'))
         print "=== option_count = {}".format(option_count)
-        # timezoneoptions.select_by_index(0)
 
         time_zone = Select(self.driver.find_element_by_id(self.config.get('Board', 'location_board_drop_id_timezone')))
         time_zone_select = self.driver.find_element_by_id(self.config.get('Board', 'location_board_drop_id_timezone'))
         time_zone_count = len(time_zone_select.find_elements_by_tag_name('option'))
 
-        time_zone_rang = [0, time_zone_count - 1]
-        i = random.choice(time_zone_rang)
-        print i
-        time_zone.select_by_index(i)
+        # time_zone_rang = [0, time_zone_count - 1]
+        # i = random.choice(time_zone_rang)
+        # print i
+        time_zone.select_by_index(10)
 
         radio_select_y = 'location_board_video_id_sum_time_y'
         radio_select_n = 'location_board_video_id_sum_time_n'
@@ -104,12 +105,12 @@ class SimpleTestWebBrowser(unittest.TestCase):
         submit.click()
 
     def test_02_edit_posting(self):
-        time.sleep(10)
-        editpost = self.driver.find_element_by_xpath(self.config.get('editpost', 'edit_post_link_text'))
-        editpost.click()
+        time.sleep(15)
+        edit_post = self.driver.find_element_by_xpath(self.config.get('editpost', 'edit_post_link_text'))
+        edit_post.click()
         self.editpost.update()
-        submiteditpost = self.driver.find_element_by_name(self.config.get('editpost', 'location_submit'))
-        submiteditpost.click()
+        submit_edit_post = self.driver.find_element_by_name(self.config.get('editpost', 'location_submit'))
+        submit_edit_post.click()
 
 
 if __name__ == '__main__':
