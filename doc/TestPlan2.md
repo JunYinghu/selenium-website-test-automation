@@ -17,7 +17,7 @@
    - Open Form  - https://www.ranorex.com
       - Get a session id from a text file
          - in the previous video, user logged into Form already, I saved a session id for concurrent running
-           https://youtu.be/kvSdQnsxQYQ
+           Please watch https://youtu.be/kvSdQnsxQYQ
 
    - Go to User Control Panel > Board preferences > Edit global settings
       - Check current radio status firstly, Then to enable the un-selected radio button
