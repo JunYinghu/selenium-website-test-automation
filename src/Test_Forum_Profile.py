@@ -21,7 +21,7 @@ class SimpleTestWebBrowser(unittest.TestCase):
         cls.config = ConfigParser.RawConfigParser(allow_no_value=True)
         cls.config.read('config.txt')
         cls.driver = webdriver.Firefox()
-        sid = ''
+        # sid = ''
         with open('sid.txt', 'r') as outfile:
             sid = outfile.read()
         # cls.driver.get("https://www.ranorex.com/forum/index.php?sid=" + sid)
@@ -38,6 +38,7 @@ class SimpleTestWebBrowser(unittest.TestCase):
             print("Due to loading timeout expired or could not find the element,Close browser,script stops running ")
             cls.driver.quit()
             sys.exit()
+
     @classmethod
     def tearDownClass(cls):
         time.sleep(8)
@@ -52,35 +53,33 @@ class SimpleTestWebBrowser(unittest.TestCase):
         elem.click()
         print "user is in User Control Panel > Board Preferences"
 
-    def test_01_open_user_board_preferences(self):
-        section='Board'
-        radio_select_n ="location_board_video_id_user_email_n"
-        radio_select_y ="location_board_video_id_user_email_y"
-        self.checkradio.validradio(section,radio_select_n,radio_select_y)
+    def test_01_edit_global_settings(self):
+        section = 'Board'
+        radio_select_n = "location_board_video_id_user_email_n"
+        radio_select_y = "location_board_video_id_user_email_y"
+        self.checkradio.validradio(section, radio_select_n, radio_select_y)
 
         radio_select_n = "location_board_video_id_admin_email_n"
         radio_select_y = "location_board_video_id_admin_email_y"
-        self.checkradio.validradio(section,radio_select_n, radio_select_y)
+        self.checkradio.validradio(section, radio_select_n, radio_select_y)
 
         radio_select_n = 'location_board_video_id_private_msg_n'
         radio_select_y = 'location_board_video_id_private_msg_y'
-        self.checkradio.validradio(section,radio_select_n, radio_select_y)
+        self.checkradio.validradio(section, radio_select_n, radio_select_y)
 
         radio_select_n = 'location_board_video_id_hide_online_n'
         radio_select_y = 'location_board_video_id_hide_online_y'
-        self.checkradio.validradio(section,radio_select_n, radio_select_y)
+        self.checkradio.validradio(section, radio_select_n, radio_select_y)
         radio_select_n = 'location_board_video_id_notify_msg_n'
-        radio_select_y= 'location_board_video_id_notify_msg_y'
-        self.checkradio.validradio(section,radio_select_n, radio_select_y)
-        radio_select_n= 'location_board_video_id_pop_win_n'
-        radio_select_y= 'location_board_video_id_pop_win_y'
-        self.checkradio.validradio(section,radio_select_n, radio_select_y)
-
-        #language_select = Select(self.driver.find_element_by_id(self.config.get('Board', 'location_board_drop_id_language')))
+        radio_select_y = 'location_board_video_id_notify_msg_y'
+        self.checkradio.validradio(section, radio_select_n, radio_select_y)
+        radio_select_n = 'location_board_video_id_pop_win_n'
+        radio_select_y = 'location_board_video_id_pop_win_y'
+        self.checkradio.validradio(section, radio_select_n, radio_select_y)
 
         # Get drop down list options and output into a csv file
-        # language_select = self.driver.find_element_by_id(self.config.get('Board', 'location_board_drop_id_language'))
-        # elements = language_select.find_elements_by_tag_name('option')
+        # timezoneoptions = self.driver.find_element_by_id(self.config.get('Board', 'location_board_drop_id_timezone'))
+        # elements = timezoneoptions.find_elements_by_tag_name('option')
         # with open('outfile.csv', 'w') as fout:
         #     fout.write('"","","","index","text"\n')
         #     for i, x in enumerate(elements):
@@ -88,7 +87,7 @@ class SimpleTestWebBrowser(unittest.TestCase):
         #         print " element #{} has text {} ".format(i, x.get_attribute("innerHTML"))
         #
         # # get drop down list count
-        # option_count = len(language_select.find_elements_by_tag_name('option'))
+        # option_count = len(timezoneoptions.find_elements_by_tag_name('option'))
         # print "=== option_count = {}".format(option_count)
         # language_select.select_by_index(0)
 
@@ -96,14 +95,14 @@ class SimpleTestWebBrowser(unittest.TestCase):
         time_zone_select = self.driver.find_element_by_id(self.config.get('Board', 'location_board_drop_id_timezone'))
         time_zone_count = len(time_zone_select.find_elements_by_tag_name('option'))
 
-        time_zone_rang = [0,time_zone_count-1]
+        time_zone_rang = [0, time_zone_count - 1]
         i = random.choice(time_zone_rang)
         print i
         time_zone.select_by_index(i)
 
         radio_select_y = 'location_board_video_id_sum_time_y'
         radio_select_n = 'location_board_video_id_sum_time_n'
-        self.checkradio.validradio(section,radio_select_n, radio_select_y)
+        self.checkradio.validradio(section, radio_select_n, radio_select_y)
         submit = self.driver.find_element_by_name(self.config.get('Board', 'location_board_btn_name_submit'))
         submit.click()
 
@@ -114,6 +113,7 @@ class SimpleTestWebBrowser(unittest.TestCase):
         self.editpost.update()
         submiteditpost = self.driver.find_element_by_name(self.config.get('editpost', 'location_submit'))
         submiteditpost.click()
+
 
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(SimpleTestWebBrowser)

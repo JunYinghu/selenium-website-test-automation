@@ -12,3 +12,4 @@ This project to store testing script on selenium
 
 ## Documentation
 - [Test plan](doc/TestPlan.md)
+- [Test plan2](doc/TestPlan2.md)

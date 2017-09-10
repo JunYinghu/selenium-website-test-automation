@@ -2,16 +2,14 @@
 
 [Test_Forum_Profile.py](src/Test_Forum_Profile.py)
 
-1 This document is designed to show how I can handle radio button, drop-down list in selenium webdriver for web app testing
+1 This document is designed to show how I can handle radio button, drop-down list in selenium webdriver with Python for web app testing
    - From technical , You will see
       - how to read a session id from a text file
       - how to instantiate class
       - how to inherit class
-      - how to set constructor to initialize an instance of a call
+      - how to set constructor to initialize an instance of a class
 
    - In order to avoiding from changes of UI, this time a configuration file is introduced to save all of xpath / name / id of elements
-
-2 This test scripts were written in Python
 
 3 The script is doing this:
    - Launch Firefox browser
@@ -20,7 +18,7 @@
       - Get a session id from a text file
          - in the previous video, user logged into Form already, I saved a session id for concurrent running
            https://youtu.be/kvSdQnsxQYQ
-           
+
    - Go to User Control Panel > Board preferences > Edit global settings
       - Check current radio status firstly, Then to enable the un-selected radio button
          - you will see how to instantiate class with constructor
