@@ -26,3 +26,14 @@ location_board_video_id_sum_time_n =dst0
 location_board_drop_id_dateformat =dateoptions
 location_board_btn_name_submit =submit
 location_board_btn_name_reset=button2
+[editpost]
+edit_post_link_text =/html/body/div[2]/div[2]/div[1]/div/div[2]/div[2]/div/div/div[1]/div/ul/li[2]/a/span
+location_bbc_code_y =bbcode1
+location_bbc_code_n =bbcode0
+location_smilies_n =smilies0
+location_smilies_y =smilies1
+location_signature_n =sig0
+location_signature_y =sig1
+location_notify_n =notify0
+location_notify_y =notify1
+location_submit =submit

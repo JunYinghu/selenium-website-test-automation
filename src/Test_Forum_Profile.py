@@ -12,6 +12,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.ui import WebDriverWait
 
 from CheckRadio import CheckRadio
+from EditPost import EditPost
 
 
 class SimpleTestWebBrowser(unittest.TestCase):
@@ -21,12 +22,12 @@ class SimpleTestWebBrowser(unittest.TestCase):
         cls.config.read('config.txt')
         cls.driver = webdriver.Firefox()
         sid = ''
-
         with open('sid.txt', 'r') as outfile:
             sid = outfile.read()
         # cls.driver.get("https://www.ranorex.com/forum/index.php?sid=" + sid)
 
         cls.checkradio = CheckRadio(cls.driver, cls.config)
+        cls.editpost = EditPost(cls.driver, cls.config)
         cls.checkradio.driver.get("https://www.ranorex.com/forum/index.php?sid=" + sid)
         try:
             WebDriverWait(cls.driver, 3).until(
@@ -52,30 +53,28 @@ class SimpleTestWebBrowser(unittest.TestCase):
         print "user is in User Control Panel > Board Preferences"
 
     def test_01_open_user_board_preferences(self):
+        section='Board'
         radio_select_n ="location_board_video_id_user_email_n"
-        radio_select_y="location_board_video_id_user_email_y"
-        self.checkradio.validradio(radio_select_n,radio_select_y)
+        radio_select_y ="location_board_video_id_user_email_y"
+        self.checkradio.validradio(section,radio_select_n,radio_select_y)
 
         radio_select_n = "location_board_video_id_admin_email_n"
         radio_select_y = "location_board_video_id_admin_email_y"
-        self.checkradio.validradio(radio_select_n, radio_select_y)
+        self.checkradio.validradio(section,radio_select_n, radio_select_y)
 
         radio_select_n = 'location_board_video_id_private_msg_n'
         radio_select_y = 'location_board_video_id_private_msg_y'
-        self.checkradio.validradio(radio_select_n, radio_select_y)
+        self.checkradio.validradio(section,radio_select_n, radio_select_y)
 
-        radio_select_y = 'location_board_video_id_private_msg_y'
-        radio_select_n = 'location_board_video_id_private_msg_n'
-        self.checkradio.validradio(radio_select_n, radio_select_y)
         radio_select_n = 'location_board_video_id_hide_online_n'
         radio_select_y = 'location_board_video_id_hide_online_y'
-        self.checkradio.validradio(radio_select_n, radio_select_y)
+        self.checkradio.validradio(section,radio_select_n, radio_select_y)
         radio_select_n = 'location_board_video_id_notify_msg_n'
         radio_select_y= 'location_board_video_id_notify_msg_y'
-        self.checkradio.validradio(radio_select_n, radio_select_y)
+        self.checkradio.validradio(section,radio_select_n, radio_select_y)
         radio_select_n= 'location_board_video_id_pop_win_n'
         radio_select_y= 'location_board_video_id_pop_win_y'
-        self.checkradio.validradio(radio_select_n, radio_select_y)
+        self.checkradio.validradio(section,radio_select_n, radio_select_y)
 
         #language_select = Select(self.driver.find_element_by_id(self.config.get('Board', 'location_board_drop_id_language')))
 
@@ -104,9 +103,17 @@ class SimpleTestWebBrowser(unittest.TestCase):
 
         radio_select_y = 'location_board_video_id_sum_time_y'
         radio_select_n = 'location_board_video_id_sum_time_n'
-        self.checkradio.validradio(radio_select_n, radio_select_y)
+        self.checkradio.validradio(section,radio_select_n, radio_select_y)
         submit = self.driver.find_element_by_name(self.config.get('Board', 'location_board_btn_name_submit'))
         submit.click()
+
+    def test_02_edit_posting(self):
+        time.sleep(10)
+        editpost = self.driver.find_element_by_xpath(self.config.get('editpost', 'edit_post_link_text'))
+        editpost.click()
+        self.editpost.update()
+        submiteditpost = self.driver.find_element_by_name(self.config.get('editpost', 'location_submit'))
+        submiteditpost.click()
 
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(SimpleTestWebBrowser)
