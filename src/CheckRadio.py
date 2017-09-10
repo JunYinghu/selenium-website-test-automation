@@ -9,8 +9,6 @@ class CheckRadio(object):
             radioselecty = self.driver.find_element_by_id(
                 self.config.get(section, radio_select_y))
             radioselecty.click()
-            # print radio_select_y
+
         else:
             radioselectn.click()
-            # text = radioselectn.get_attribute("innerHTML")
-            # print "====this is radio text", radio_select_n

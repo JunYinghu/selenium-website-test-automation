@@ -44,7 +44,7 @@ class SimpleTestWebBrowser(unittest.TestCase):
         time.sleep(8)
         # cls.driver.quit()
 
-    def test_00_open_usercontrolpanel(self):
+    def test_00_open_user_control_panel(self):
         elem = self.driver.find_element_by_css_selector(
             self.config.get('Forum', 'location_forum_css_btn_useruontropuanel'))
         elem.click()
@@ -75,18 +75,18 @@ class SimpleTestWebBrowser(unittest.TestCase):
         self.checkradio.validradio(section, radio_select_n, radio_select_y)
 
         # Get drop down list options and output into a csv file
-        # timezoneoptions = self.driver.find_element_by_id(self.config.get('Board', 'location_board_drop_id_timezone'))
-        # elements = timezoneoptions.find_elements_by_tag_name('option')
-        # with open('outfile.csv', 'w') as fout:
-        #     fout.write('"","","","index","text"\n')
-        #     for i, x in enumerate(elements):
-        #         fout.write('"","","","{}","{}"\n'.format(i, x.get_attribute("innerHTML")))
-        #         print " element #{} has text {} ".format(i, x.get_attribute("innerHTML"))
-        #
-        # # get drop down list count
-        # option_count = len(timezoneoptions.find_elements_by_tag_name('option'))
-        # print "=== option_count = {}".format(option_count)
-        # language_select.select_by_index(0)
+        timezoneoptions = self.driver.find_element_by_id(self.config.get('Board', 'location_board_drop_id_timezone'))
+        elements = timezoneoptions.find_elements_by_tag_name('option')
+        with open('Timezoneoption.csv', 'w') as fout:
+            fout.write('"","","","index","text"\n')
+            for i, x in enumerate(elements):
+                fout.write('"","","","{}","{}"\n'.format(i, x.get_attribute("innerHTML")))
+                print " element #{} has text {} ".format(i, x.get_attribute("innerHTML"))
+
+        # get drop down list count
+        option_count = len(timezoneoptions.find_elements_by_tag_name('option'))
+        print "=== option_count = {}".format(option_count)
+        # timezoneoptions.select_by_index(0)
 
         time_zone = Select(self.driver.find_element_by_id(self.config.get('Board', 'location_board_drop_id_timezone')))
         time_zone_select = self.driver.find_element_by_id(self.config.get('Board', 'location_board_drop_id_timezone'))

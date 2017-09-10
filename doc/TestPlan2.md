@@ -1,4 +1,4 @@
-# Selenium Test Automation Plan
+# Selenium Test Automation Plan2
 
 [Test_Forum_Profile.py](src/Test_Forum_Profile.py)
 
