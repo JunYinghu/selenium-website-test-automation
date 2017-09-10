@@ -3,7 +3,7 @@ class CheckRadio(object):
         self.driver = driver
         self.config = config
 
-    def validradio(self, section, radio_select_n, radio_select_y):
+    def selectradio(self, section, radio_select_n, radio_select_y):
         radioselectn = self.driver.find_element_by_id(self.config.get(section, radio_select_n))
         if radioselectn.is_selected():
             radioselecty = self.driver.find_element_by_id(
