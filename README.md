@@ -8,7 +8,7 @@ This project to store testing script on selenium
 - Watching video https://youtu.be/kvSdQnsxQYQ
 
 - [Test_Forum_Profile.py](src/Test_Forum_Profile.py) - written in Python
-- Watching video
+- Watching video https://youtu.be/ILxbat-KvMw
 
 ## Documentation
 - [Test plan](doc/TestPlan.md)
