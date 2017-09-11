@@ -2,6 +2,9 @@ from CheckRadio import CheckRadio
 
 
 class EditPost(CheckRadio):
+    def __init__(self, driver, config):
+        CheckRadio.__init__(self, driver, config)
+
     def update(self):
         section = 'editpost'
         radio_select_n = 'location_bbc_code_y'
