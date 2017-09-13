@@ -10,7 +10,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.ui import WebDriverWait
 
-
 from EditPost import EditPost
 
 
@@ -22,7 +21,6 @@ class SimpleTestWebBrowser(unittest.TestCase):
         cls.config = ConfigParser.RawConfigParser(allow_no_value=True)
         cls.config.read('config.txt')
         cls.driver = webdriver.Firefox()
-
 
         cls.editpost = EditPost(cls.driver, cls.config)
         cls.editpost.driver.get("https://www.ranorex.com/forum/index.php?sid=" + sid)
@@ -86,12 +84,12 @@ class SimpleTestWebBrowser(unittest.TestCase):
                 # print " element #{} has text {} ".format(i, x.get_attribute("innerHTML"))
 
         # get drop down list count
-        option_count = len(time_zone_option.find_elements_by_tag_name('option'))
+        # option_count = len(time_zone_option.find_elements_by_tag_name('option'))
         # print "=== option_count = {}".format(option_count)
 
         time_zone = Select(self.driver.find_element_by_id(self.config.get('Board', 'location_board_drop_id_timezone')))
-        time_zone_select = self.driver.find_element_by_id(self.config.get('Board', 'location_board_drop_id_timezone'))
-        time_zone_count = len(time_zone_select.find_elements_by_tag_name('option'))
+        # time_zone_select = self.driver.find_element_by_id(self.config.get('Board', 'location_board_drop_id_timezone'))
+        # time_zone_count = len(time_zone_select.find_elements_by_tag_name('option'))
 
         # time_zone_rang = [0, time_zone_count - 1]
         # i = random.choice(time_zone_rang)
