@@ -10,7 +10,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.ui import WebDriverWait
 
-from src.utiliDoc.EditPost import EditPost
+from utiliDoc.EditPost import EditPost
 
 
 class SimpleTestWebBrowser(unittest.TestCase):
@@ -77,7 +77,7 @@ class SimpleTestWebBrowser(unittest.TestCase):
         # Get drop down list options and output into a csv file
         time_zone_option = self.driver.find_element_by_id(self.config.get('Board', 'location_board_drop_id_timezone'))
         time_zone_options_list = time_zone_option.find_elements_by_tag_name('option')
-        with open('Time_zone_option.csv', 'w') as fout:
+        with open('resource/Time_zone_option.csv', 'w') as fout:
             fout.write('"","","","Index","Options_list"\n')
             for i, x in enumerate(time_zone_options_list):
                 fout.write('"","","","{}","{}"\n'.format(i, x.get_attribute("innerHTML")))
