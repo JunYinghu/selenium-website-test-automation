@@ -74,7 +74,7 @@ class SimpleTestWebBrowser(unittest.TestCase):
         pass_word = argv[2]
         # Enter user name / pass word from your command window so that everyone can use own username / password to login.
         # user_name = raw_input("enter user_name:");
-        # pass_word = raw_input("enter pass_word:");
+        # pass_word = raw_input("enter pass_wrd:");
 
         elem_user = self.driver.find_element_by_id("username")
         elem_user.send_keys(user_name)

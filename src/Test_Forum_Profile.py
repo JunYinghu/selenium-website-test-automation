@@ -10,16 +10,16 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.ui import WebDriverWait
 
-from EditPost import EditPost
+from src.utiliDoc.EditPost import EditPost
 
 
 class SimpleTestWebBrowser(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        with open('sid.txt', 'r') as outfile:
+        with open('resource/sid.txt', 'r') as outfile:
             sid = outfile.read()
         cls.config = ConfigParser.RawConfigParser(allow_no_value=True)
-        cls.config.read('config.txt')
+        cls.config.read('resource/config.txt')
         cls.driver = webdriver.Firefox()
 
         cls.editpost = EditPost(cls.driver, cls.config)

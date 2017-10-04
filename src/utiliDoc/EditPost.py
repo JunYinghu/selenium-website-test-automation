@@ -1,4 +1,4 @@
-from CheckRadio import CheckRadio
+from src.utiliDoc.CheckRadio import CheckRadio
 
 
 class EditPost(CheckRadio):

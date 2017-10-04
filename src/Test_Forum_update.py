@@ -15,7 +15,7 @@ class SimpleTestWebBrowser(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.config = ConfigParser.RawConfigParser(allow_no_value=True)
-        cls.config.read('config.txt')
+        cls.config.read('resource/config.txt')
         cls.driver = webdriver.Firefox()
         cls.driver.get("https://www.google.com.sg")
         try:
@@ -144,7 +144,7 @@ class SimpleTestWebBrowser(unittest.TestCase):
                 else:
                     time.sleep(1)
 
-            with open('sid.txt', 'w') as outfile:
+            with open('resource/sid.txt', 'w') as outfile:
                 outfile.write(sid)
                 #
                 # outfile = open('sid.txt', 'w')
