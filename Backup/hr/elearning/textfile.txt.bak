@@ -1,0 +1,130 @@
+Linux  http://www.jianshu.com/p/1694bb5bdb8b
+   - Install Python
+   - Install pip
+   - Install appium python client
+   - Install node - sudo apt-get install nodejs
+   - Install npm - sudo apt-get install npm
+   - Install appium - 
+   - Install Jdk, http://openjdk.java.net/install/
+   - Install github
+   - Install Android SDK
+
+lsusb
+ ./adb devices
+adb kill-server
+adb start-server
+
+
+Windows
+
+ - Appium desktop
+ - Android SDK
+ - Appium-Python-Client
+ - Nodejs
+ 
+https://dl.google.com/android/repository/tools_r25.2.3-linux.zip
+
+
+Appium-Python-Client - download and install
+Then create a new folder to install, need to release all permission for all users
+
+python -m pip install Appium-Python-Client
+ 
+run script.py
+  - python.exe <testscript_name.py>
+
+-------------------------
+
+adb 
+run adb (Android SDK)
+dumpsys activity intents
+  adb.exe shell dumpsys activity > c:\Users\hujy\dump4.txt
+   -search keyword 'Focus' to get mainactivity
+
+Get appPackage and appActivity
+Conect Device
+Open the APP
+adb devices - check device is connected to computer
+adb shell
+dumpsys window windows | grep -E 'mCurrentFocus|mFocuseApp'
+
+http://toolsqa.com/mobile-automation/appium/how-to-find-apppackage-and-appactivity-for-apk-file/
+
+
+---------------
+
+- Github
+Account: hujy11@gmail.com/yxchappy123
+--------------
+
+Cygwin 
+--------------------
+- Cygwin to generate a pulick key for github
+$cd github - go into a folder
+$cd chrome-android-test-automation
+
+$ ssh-keygen -t rsa -b 4096 -C "hujy11@gmail.com"
+$ cat .ssh/id_rsa.pub
+$ git clone https://github.com/JunYinghu/chrome-android-test-automation.git - (The hyperlink getting from github clone or download)
+
+-----------
+commit some changes from laptop to github
+
+$ git status  - check for changes
+$ git add .
+$ git status
+$ git commit -sa
+vi editor command
+
+   - input your comments 
+   - i to edit
+   - Shift + A to get to end of line
+   - Press esc twice
+ 
+   - :wq <enter>
+
+$ git push - enter username / passwordk
+-------
+
+Get fies from github to laptop
+$ git pull
+-----
+
+
+
+-----------------
+https://appium.readthedocs.io/en/stable/en/writing-running-appium/appium-bindings/
+https://qxf2.com/blog/identify-ui-elements-mobile-apps/
+https://qxf2.com/blog/appium-tutorial-python-physical-device/
+https://cloud.github.com/downloads/diveintomark/diveintopython3/dive-into-python3.pdf
+http://test-cookbook.readthedocs.io/en/latest/Appium/03_Python_API.html
+http://test-cookbook.readthedocs.io/en/latest/Appium/07_swipe.html
+http://www.cnblogs.com/psklf/p/5368828.html
+http://javascript.ruanyifeng.com/dom/element.html
+-----------
+VM Struction
+Jun / yxchappy123
+
+- install pip and git
+sudo apt-get install python-pip git
+
+- Or install git 
+sudo apt-get install git  - clone github
+
+--------------
+unzip Node.xz file
+tar xvJf <file_name>.xz
+sudo mv <fxie_name> /opt/
+
+
+register Node.js:
+vi ~/.bashrc
+	PATH=$PATH:/opt<path/bin>
+	export PATH
+:wq
+source ~/.bashrc (the path immediately affect, no need to re-start)
+--------------
+jdk
+sudo 
+
+this is line 1

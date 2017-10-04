@@ -1,3 +1,4 @@
+from elearning.game import game
 from hr import VERSION   # a way to import var from _init_.py
 from hr.types.bonus import globlevar   # a way to import a globle var from a.py file
 
@@ -43,7 +44,7 @@ class MyClass(object):
         #self.base_sallary = base_sallary
         self.leavecau = Leavecau()
         self.performancebounus = PerformanceBonus(self.base_sallary)
-
+        self.game = game()
     def test(self):
         print self.leavecau.leaveanual("wangli",2)
         print self.leavecau1.leaveanual("liping",1)
@@ -51,6 +52,7 @@ class MyClass(object):
         print calculate_tax(1000)
         print TwoNumberOperation.add(100,20)  #using a way to import class with classmethod from a.py file
         print Leavecau.get_max_annual_leaave()#using a way to import class with classmethod from a.py file
+        print self.game.gamce()
 
 print "this is from fun, outside class", useing()
 

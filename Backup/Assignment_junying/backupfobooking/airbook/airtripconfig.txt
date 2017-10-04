@@ -1,0 +1,30 @@
+[Booking]
+
+Departure_option_xpath =/html/body/div[1]/div/form/dl[1]/dd/select
+Return_option_xpath =/html/body/div[1]/div/form/dl[2]/dd/select
+Promotional_code_xpath =/html/body/div[1]/div/form/dl[3]/dd/input
+Search_button_xpath =/html/body/div[1]/div/form/dl[4]/dd/input
+
+[SearchResult]
+Search_result_text_xpath =/html/body/div[1]/div/p[1]
+Go_back_button_xpath =/html/body/div[1]/div/p[2]/a
+Search_result_text_xpath2 =/html/body/div[1]/div/p[2]
+Go_back_button_xpath2 =/html/body/div[1]/div/p[3]/a
+Search_result_text_xpath3 =/html/body/div[1]/div/p[3]
+Go_back_button_xpath3 =/html/body/div[1]/div/p[4]/a
+
+case_1_text =""
+case_2_text =""
+case_3_text =""
+
+
+
+Search_result_text_css =#content > p:nth-child(2)
+Go_back_button_css = #content > p:nth-child(3) > a
+
+Search_result_text_css_2 =#content > p:nth-child(3)
+Go_back_button_css_2 =/#content > p:nth-child(4) > a
+Search_result_text_css_3 =/html/body/div[1]/div/p[3]
+Go_back_button_css_3 =/html/body/div[1]/div/p[4]/a
+
+

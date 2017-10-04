@@ -1,0 +1,86 @@
+selected depature_id,selected returning_id,depature_date,returing_date,promcode,diff_day,actual_result_screen,expected_result,status
+0,0,Select...,Select...,none,0,actualresult\case-screen-0-0.png,"Unfortunately, this schedule is not possible. Please try again.",False
+0,0,Select...,Select...,SY9-BRL-526,0,actualresult\case-screen-0-0.png,"Unfortunately, this schedule is not possible. Please try again.",False
+0,0,Select...,Select...,Z,0,actualresult\case-screen-0-0.png,"Unfortunately, this schedule is not possible. Please try again.",False
+0,1,Select...,July,none,0,actualresult\case-screen-0-1.png,"Unfortunately, this schedule is not possible. Please try again.",False
+0,1,Select...,July,ML4-DDP-217,0,actualresult\case-screen-0-1.png,"Unfortunately, this schedule is not possible. Please try again.",False
+0,1,Select...,July,"B._,q*O#]]UzS\QrkF#V:<[,i]U]B\",0,actualresult\case-screen-0-1.png,"Unfortunately, this schedule is not possible. Please try again.",False
+0,2,Select...,December,none,0,actualresult\case-screen-0-2.png,"Unfortunately, this schedule is not possible. Please try again.",True
+0,2,Select...,December,KJ4-NSZ-330,0,actualresult\case-screen-0-2.png,"Unfortunately, this schedule is not possible. Please try again.",True
+0,2,Select...,December,p,0,actualresult\case-screen-0-2.png,"Unfortunately, this schedule is not possible. Please try again.",True
+0,3,Select...,July (next year),none,0,actualresult\case-screen-0-3.png,"Unfortunately, this schedule is not possible. Please try again.",False
+0,3,Select...,July (next year),TH7-STJ-579,0,actualresult\case-screen-0-3.png,"Unfortunately, this schedule is not possible. Please try again.",False
+0,3,Select...,July (next year),R,0,actualresult\case-screen-0-3.png,"Unfortunately, this schedule is not possible. Please try again.",False
+0,4,Select...,December (next year),none,0,actualresult\case-screen-0-4.png,"Unfortunately, this schedule is not possible. Please try again.",False
+0,4,Select...,December (next year),GK0-LWT-695,0,actualresult\case-screen-0-4.png,"Unfortunately, this schedule is not possible. Please try again.",False
+0,4,Select...,December (next year),n,0,actualresult\case-screen-0-4.png,"Unfortunately, this schedule is not possible. Please try again.",False
+0,5,Select...,July (two years from now),none,0,actualresult\case-screen-0-5.png,"Unfortunately, this schedule is not possible. Please try again.",False
+0,5,Select...,July (two years from now),BJ7-HGB-748,0,actualresult\case-screen-0-5.png,"Unfortunately, this schedule is not possible. Please try again.",False
+0,5,Select...,July (two years from now),"""*S5HPIbs&-t!xb&XfjG2M<F&Gupf1",0,actualresult\case-screen-0-5.png,"Unfortunately, this schedule is not possible. Please try again.",False
+0,6,Select...,December (two years from now),none,0,actualresult\case-screen-0-6.png,"Unfortunately, this schedule is not possible. Please try again.",False
+0,6,Select...,December (two years from now),EF5-OSM-061,0,actualresult\case-screen-0-6.png,"Unfortunately, this schedule is not possible. Please try again.",False
+0,6,Select...,December (two years from now),:,0,actualresult\case-screen-0-6.png,"Unfortunately, this schedule is not possible. Please try again.",False
+1,0,July,Select...,none,0,actualresult\case-screen-1-0.png,"Unfortunately, this schedule is not possible. Please try again.",False
+1,0,July,Select...,EO7-FPT-850,0,actualresult\case-screen-1-0.png,"Unfortunately, this schedule is not possible. Please try again.",False
+1,0,July,Select...,wa9|q<lQKSUsuQL<19l$UDkGU~[&eK,0,actualresult\case-screen-1-0.png,"Unfortunately, this schedule is not possible. Please try again.",False
+1,1,July,July,none,0,actualresult\case-screen-1-1.png,"Unfortunately, this schedule is not possible. Please try again.",False
+1,1,July,July,KY9-HJJ-481,0,actualresult\case-screen-1-1.png,"Unfortunately, this schedule is not possible. Please try again.",False
+1,1,July,July,",,7>W9S^p@,g@%qaI0~jX""=p5c%V5n",0,actualresult\case-screen-1-1.png,"Unfortunately, this schedule is not possible. Please try again.",False
+1,2,July,December,none,153,actualresult\case-screen-1-2.png,"Unfortunately, this schedule is not possible. Please try again.",True
+1,2,July,December,ZZ8-SPY-402,153,actualresult\case-screen-1-2.png,"Unfortunately, this schedule is not possible. Please try again.",True
+1,2,July,December,IGM:Uk*i8s+=L$-.m3ITRx|#Jr@)mh,153,actualresult\case-screen-1-2.png,"Unfortunately, this schedule is not possible. Please try again.",True
+1,3,July,July (next year),none,365,actualresult\case-screen-1-3.png,"Sorry, there are no more seats available.",True
+1,3,July,July (next year),BF2-VFE-406,365,actualresult\case-screen-1-3.png,"Sorry, there are no more seats available.",True
+1,3,July,July (next year),$`^QcVmSI=in^D$AfWy|fF/~eshV>r,365,actualresult\case-screen-1-3.png,"Sorry, code [$`^QcVmSI=in^D$AfWy|fF/~eshV>r] is not valid",False
+1,4,July,December (next year),none,518,actualresult\case-screen-1-4.png,"Sorry, there are no more seats available.",True
+1,4,July,December (next year),BR9-WCB-177,518,actualresult\case-screen-1-4.png,"Sorry, there are no more seats available.",True
+1,4,July,December (next year),d,518,actualresult\case-screen-1-4.png,"Sorry, code [d] is not valid",False
+1,5,July,July (two years from now),none,730,actualresult\case-screen-1-5.png,"Sorry, there are no more seats available.",True
+1,5,July,July (two years from now),UP2-FZB-260,730,actualresult\case-screen-1-5.png,"Sorry, there are no more seats available.",True
+1,5,July,July (two years from now),%p=o!Ns_K\A&s_F28+M_S.V)~'fYHq,730,actualresult\unexpected-error-1-5.png,unexpectederror,False
+1,6,July,December (two years from now),none,883,actualresult\case-screen-1-6.png,"Unfortunately, this schedule is not possible. Please try again.",False
+1,6,July,December (two years from now),RS5-SWX-274,883,actualresult\case-screen-1-6.png,"Unfortunately, this schedule is not possible. Please try again.",False
+1,6,July,December (two years from now),>,883,actualresult\case-screen-1-6.png,"Unfortunately, this schedule is not possible. Please try again.",False
+2,0,December,Select...,none,0,actualresult\case-screen-2-0.png,"Unfortunately, this schedule is not possible. Please try again.",False
+2,0,December,Select...,KP9-IUJ-098,0,actualresult\case-screen-2-0.png,"Unfortunately, this schedule is not possible. Please try again.",False
+2,0,December,Select...,x,0,actualresult\case-screen-2-0.png,"Unfortunately, this schedule is not possible. Please try again.",False
+2,1,December,July,none,-153,actualresult\case-screen-2-1.png,"Unfortunately, this schedule is not possible. Please try again.",False
+2,1,December,July,QZ3-YAY-384,-153,actualresult\case-screen-2-1.png,"Unfortunately, this schedule is not possible. Please try again.",False
+2,1,December,July,I,-153,actualresult\case-screen-2-1.png,"Unfortunately, this schedule is not possible. Please try again.",False
+2,2,December,December,none,0,actualresult\case-screen-2-2.png,"Unfortunately, this schedule is not possible. Please try again.",False
+2,2,December,December,YD1-ZPD-348,0,actualresult\case-screen-2-2.png,"Unfortunately, this schedule is not possible. Please try again.",False
+2,2,December,December,uLy7>?d>XPy.#tPLd!nND8n27uvvI%,0,actualresult\case-screen-2-2.png,"Unfortunately, this schedule is not possible. Please try again.",False
+2,3,December,July (next year),none,212,actualresult\case-screen-2-3.png,"Unfortunately, this schedule is not possible. Please try again.",True
+2,3,December,July (next year),RS4-AVV-408,212,actualresult\case-screen-2-3.png,"Unfortunately, this schedule is not possible. Please try again.",True
+2,3,December,July (next year),K,212,actualresult\case-screen-2-3.png,"Unfortunately, this schedule is not possible. Please try again.",True
+2,4,December,December (next year),none,365,actualresult\case-screen-2-4.png,"Sorry, there are no more seats available.",True
+2,4,December,December (next year),SH1-OPV-618,365,actualresult\case-screen-2-4.png,"Sorry, there are no more seats available.",True
+2,4,December,December (next year),G,365,actualresult\case-screen-2-4.png,"Sorry, code [G] is not valid",False
+2,5,December,July (two years from now),none,577,actualresult\case-screen-2-5.png,"Sorry, there are no more seats available.",True
+2,5,December,July (two years from now),RT4-CWD-138,577,actualresult\case-screen-2-5.png,"Sorry, there are no more seats available.",True
+2,5,December,July (two years from now),"AUKZaB,2Yv??>beKz,anI[TLA|0Mf&",577,actualresult\case-screen-2-5.png,"Sorry, code [AUKZaB,2Yv??>beKz,anI[TLA|0Mf&] is not valid",False
+2,6,December,December (two years from now),none,730,actualresult\case-screen-2-6.png,"Sorry, there are no more seats available.",True
+2,6,December,December (two years from now),XM8-YHA-491,730,actualresult\case-screen-2-6.png,"Sorry, there are no more seats available.",True
+2,6,December,December (two years from now),m,730,actualresult\case-screen-2-6.png,"Sorry, code [m] is not valid",False
+3,0,July (next year),Select...,none,0,actualresult\case-screen-3-0.png,"Unfortunately, this schedule is not possible. Please try again.",False
+3,0,July (next year),Select...,PS9-OIW-098,0,actualresult\case-screen-3-0.png,"Unfortunately, this schedule is not possible. Please try again.",False
+3,0,July (next year),Select...,")a.[/qwFJotxzq56""X|pI:-a\}tSY{",0,actualresult\case-screen-3-0.png,"Unfortunately, this schedule is not possible. Please try again.",False
+3,1,July (next year),July,none,-365,actualresult\case-screen-3-1.png,"Unfortunately, this schedule is not possible. Please try again.",False
+3,1,July (next year),July,XP6-MII-747,-365,actualresult\case-screen-3-1.png,"Unfortunately, this schedule is not possible. Please try again.",False
+3,1,July (next year),July,gla)>ql>8v`HaLx7d``Jjq{FR=G`5M,-365,actualresult\case-screen-3-1.png,"Unfortunately, this schedule is not possible. Please try again.",False
+3,2,July (next year),December,none,-212,actualresult\case-screen-3-2.png,"Unfortunately, this schedule is not possible. Please try again.",False
+3,2,July (next year),December,ER9-QLI-728,-212,actualresult\case-screen-3-2.png,"Unfortunately, this schedule is not possible. Please try again.",False
+3,2,July (next year),December,N,-212,actualresult\case-screen-3-2.png,"Unfortunately, this schedule is not possible. Please try again.",False
+3,3,July (next year),July (next year),none,0,actualresult\case-screen-3-3.png,"Unfortunately, this schedule is not possible. Please try again.",False
+3,3,July (next year),July (next year),XV0-NIA-561,0,actualresult\case-screen-3-3.png,"Unfortunately, this schedule is not possible. Please try again.",False
+3,3,July (next year),July (next year),._q808R$}E@%+x]L`EFL[%&%[AyZ?O,0,actualresult\case-screen-3-3.png,"Unfortunately, this schedule is not possible. Please try again.",False
+3,4,July (next year),December (next year),none,153,actualresult\case-screen-3-4.png,"Unfortunately, this schedule is not possible. Please try again.",True
+3,4,July (next year),December (next year),ER1-KUJ-742,153,actualresult\case-screen-3-4.png,"Unfortunately, this schedule is not possible. Please try again.",True
+3,4,July (next year),December (next year),<}{)RxgeGUX#4Cn*;}lgO*83*k6'X2,153,actualresult\unexpected-error-3-4.png,unexpectederror,False
+3,5,July (next year),July (two years from now),none,365,actualresult\case-screen-3-5.png,"Sorry, there are no more seats available.",True
+3,5,July (next year),July (two years from now),TL6-AQX-310,365,actualresult\case-screen-3-5.png,"Sorry, there are no more seats available.",True
+3,5,July (next year),July (two years from now),":!,""&abA^:CT'Gzn8Vz|-eR.lbO=ID",365,actualresult\unexpected-error-3-5.png,unexpectederror,False
+3,6,July (next year),December (two years from now),none,518,actualresult\case-screen-3-6.png,"Sorry, there are no more seats available.",True
+3,6,July (next year),December (two years from now),DZ1-JKX-416,518,actualresult\case-screen-3-6.png,"Sorry, there are no more seats available.",True
+3,6,July (next year),December (two years from now),p,518,actualresult\case-screen-3-6.png,"Sorry, code [p] is not valid",False
+4,0,December (next year),Select...,none,0,actualresult\case-screen-4-0.png,"Unfort
