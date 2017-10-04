@@ -89,8 +89,8 @@ class SimpleTestWebBrowser(unittest.TestCase):
                 (By.CSS_SELECTOR, '#language-nav > ul:nth-child(1) > li:nth-child(4) > a:nth-child(1)')))
             Page_url = self.driver.current_url
             # print ("Pass: validation  You are in " + Page_url + " Ready: Launch Login page")
-            # elem = self.driver.find_element_by_css_selector(
-            # '#language-nav > ul:nth-child(1) > li:nth-child(4) > a:nth-child(1)').click()
+            elem = self.driver.find_element_by_css_selector(
+             '#language-nav > ul:nth-child(1) > li:nth-child(4) > a:nth-child(1)').click()
         except TimeoutException:
             print("Due to loading timeout expired or could not find the element,Close browser,script stops running ")
             self.driver.quit()
@@ -99,6 +99,7 @@ class SimpleTestWebBrowser(unittest.TestCase):
     # login in Forum with username / password validation
     def test_02_Login_Forum(self):
         # Go to Login Page
+
         elem = self.driver.find_element_by_css_selector(".icon-logout > a:nth-child(1)").click()
         # Enter user name / pass word before the script is running so that everyone can use own username / password to login.
         user_name = argv[1]
