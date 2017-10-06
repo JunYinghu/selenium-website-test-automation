@@ -7,32 +7,31 @@ from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.ui import WebDriverWait
 
-from utiliDoc.dropDownList import dropDownList
 from utiliDoc.EditPost import EditPost
-from utiliDoc.editGlobalSetting import editGlobalSetting
+from utiliDoc.dropDownList import dropDownList
+
+with open('resource/sid.txt', 'r') as outfile:
+    sid = outfile.read()
+
 
 class SimpleTestWebBrowser(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        with open('resource/sid.txt', 'r') as outfile:
-            sid = outfile.read()
+
         cls.config = ConfigParser.RawConfigParser(allow_no_value=True)
         cls.config.read('resource/config.txt')
         cls.driver = webdriver.Firefox()
-
         cls.editpost = EditPost(cls.driver, cls.config)
         cls.editpost.driver.get("https://www.ranorex.com/forum/index.php?sid=" + sid)
         # cls.driver.get("https://www.ranorex.com/forum/index.php?sid=" + sid)
-        cls.editGlobalSet = editGlobalSetting(cls.driver, cls.config)
+
         cls.dropdownlist = dropDownList(cls.driver, cls.config)
         try:
             WebDriverWait(cls.driver, 3).until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, '.icon-ucp > a:nth-child(1)')))
             print ("you may update your profile!")
-
         except TimeoutException:
             print("Due to loading timeout expired or could not find the element,Close browser,script stops running ")
             cls.driver.quit()
@@ -52,12 +51,11 @@ class SimpleTestWebBrowser(unittest.TestCase):
         board_preferences.click()
 
     def test_01_edit_global_settings(self):
-        time.sleep(5)
-        #self.editGlobalSet.updateRadio()
         self.dropdownlist.selectdropList()
 
     def test_02_edit_posting(self):
-        time.sleep(10)
+        self.driver.get("https://www.ranorex.com/forum/index.php?sid=" + sid)
+        time.sleep(8)
         edit_post = self.driver.find_element_by_xpath(self.config.get('editpost', 'edit_post_link_text'))
         edit_post.click()
         self.editpost.update()
