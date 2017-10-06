@@ -4,15 +4,12 @@ from airbook.search_result.returnsearchresult import ReturnResult
 from airbook.utils.datediffcal import day_diff_cal
 from airbook.utils.getpath import GetElementPath
 
-
 class SearchTrip(GetElementPath):
     def __init__(self, config, driver):
         GetElementPath.__init__(self, config, driver)
-
     def select_departure_return(self, section_name, find_element_path):
         selected_option = Select(self.get_path(section_name, find_element_path))
         return selected_option
-
     def get_depature_return(self, current_depature_id=0, current_return_id=0, input_prom_cod="none"):
         sr = ReturnResult(self.config, self.driver)
         selected_d_t = "none"

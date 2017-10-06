@@ -1,3 +1,6 @@
+import time
+
+
 class CheckRadio(object):
     def __init__(self, driver, config):
         self.driver = driver
@@ -9,6 +12,7 @@ class CheckRadio(object):
             radioselecty = self.driver.find_element_by_id(
                 self.config.get(section, radio_select_y))
             radioselecty.click()
+            #radioselect_text = radioselecty.get_attribute("innerHTML")
 
         else:
             radioselectn.click()
