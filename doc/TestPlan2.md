@@ -11,7 +11,7 @@
 
    - In order to avoiding from changes of UI, this time a configuration file is introduced to save all of xpath / name / id of elements
 
-3 The script is doing this:
+2 The script is doing this:
    - Launch Firefox browser
 
    - Open Form  - https://www.ranorex.com
@@ -31,12 +31,12 @@
    
    - Exit from browser
 
-4 Test tools / ENV
+3 Test tools / ENV
    - PyCharm
    - Python
    - Selenium webdrvier
    
-5 Tested information:
+4 Tested information:
    - Firefox browser
    
    
