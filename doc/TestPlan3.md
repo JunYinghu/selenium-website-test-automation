@@ -1,8 +1,8 @@
 # Selenium Test Automation Plan3
 [Test_Forum_Profile.py](src/Test_Forum_Profile.py)
 
-https://www.linkedin.com/in/junyinghu/
-https://github.com/JunYinghu
+  - https://www.linkedin.com/in/junyinghu/
+  - https://github.com/JunYinghu
 
 
 Please kindly watch related video:
