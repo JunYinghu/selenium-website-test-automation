@@ -1,9 +1,9 @@
-from CheckRadio import CheckRadio
+from checkRadio import checkRadio
 
 
-class EditPost(CheckRadio):
+class EditPost(checkRadio):
     def __init__(self, driver, config):
-        CheckRadio.__init__(self, driver, config)
+        checkRadio.__init__(self, driver, config)
 
     def update(self):
         section = 'editpost'

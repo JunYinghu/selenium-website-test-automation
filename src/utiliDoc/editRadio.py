@@ -1,11 +1,12 @@
 import time
 
-from CheckRadio import CheckRadio
+from checkRadio import checkRadio
 
 
-class editGlobalSetting(CheckRadio):
+# inherit from checkRadio and update the radio button for each one
+class editRadio(checkRadio):
     def __init__(self, driver, config):
-        CheckRadio.__init__(self, driver, config)
+        checkRadio.__init__(self, driver, config)
 
     def updateRadio(self):
         time.sleep(10)

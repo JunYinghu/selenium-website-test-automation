@@ -26,8 +26,7 @@ class SimpleTestWebBrowser(unittest.TestCase):
         cls.editpost = EditPost(cls.driver, cls.config)
         cls.editpost.driver.get("https://www.ranorex.com/forum/index.php?sid=" + sid)
         # cls.driver.get("https://www.ranorex.com/forum/index.php?sid=" + sid)
-
-        cls.dropdownlist = dropDownList(cls.driver, cls.config)
+        cls.editGolableSetting = dropDownList(cls.driver, cls.config)
         try:
             WebDriverWait(cls.driver, 3).until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, '.icon-ucp > a:nth-child(1)')))
@@ -50,8 +49,9 @@ class SimpleTestWebBrowser(unittest.TestCase):
             self.config.get('Forum', 'location_forum_css_btn_boardpreferences'))
         board_preferences.click()
 
+    # perform fun dropdownloopselect
     def test_01_edit_global_settings(self):
-        self.dropdownlist.selectdropList()
+        self.editGolableSetting.dropdownloopselect()
 
     def test_02_edit_posting(self):
         self.driver.get("https://www.ranorex.com/forum/index.php?sid=" + sid)
