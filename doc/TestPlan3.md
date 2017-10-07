@@ -7,10 +7,9 @@ https://github.com/JunYinghu
 
 Please kindly watch related video:
 
-- WebSite -  https://youtu.be/kvSdQnsxQYQ – finding element, checking keyword, checking error message
-- WebSite -  https://youtu.be/qerJroOBeNg – finding element via configuration, checking radio button, read a session id from a text file , instantiate class , inherit class, constructor 
-
-- Android(Samsung Note5) - https://youtu.be/Njdcjb3c-i8 – Sending text message / image, taking image / sending it, taking video / sending it, searching conversation and deleting it
+  - WebSite -  https://youtu.be/kvSdQnsxQYQ – finding element, checking keyword, checking error message
+  - WebSite -  https://youtu.be/qerJroOBeNg – finding element via configuration, checking radio button, read a session id from a text file , instantiate class , inherit class, constructor 
+  - Android(Samsung Note5) - https://youtu.be/Njdcjb3c-i8 – Sending text message / image, taking image / sending it, taking video / sending it, searching conversation and deleting it
 
 1 This document is designed to show how to handle drop-down list in selenium webdriver with Python for web app testing
    - From technical , You will see
